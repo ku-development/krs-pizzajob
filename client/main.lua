@@ -1,6 +1,10 @@
 local QBCore = exports[Config.CoreResourceName]:GetCoreObject()
 local npcPed = 0
 
+
+
+
+-- Threads
 CreateThread(function()
     local npcModel = Config.NpcStart
     -- Request NPC model
@@ -51,4 +55,26 @@ CreateThread(function()
     },
     distance = 2.5,
     })
+end)
+
+-- Events
+RegisterNetEvent('krs-pizzajob:client:StartJob', function()
+   -- Get job vehicle model from config
+   local vehicleModel = Config.JobVehicle
+
+   -- Request and wait for model to load
+   RequestModel(vehicleModel)
+   while not HasModelLoaded(vehicleModel) do
+       Wait(500)
+   end
+
+   -- Get player's ped and create vehicle
+   local playerPed = PlayerPedId()
+   local vehicle = CreateVehicle(vehicleModel, GetEntityCoords(playerPed), GetEntityHeading(playerPed), true, false)
+
+   -- Warp player into vehicle
+   TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
+
+   -- Set vehicle owner
+   TriggerEvent("vehiclekeys:client:SetOwner", GetVehicleNumberPlateText(vehicle), vehicle)
 end)
