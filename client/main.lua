@@ -74,10 +74,13 @@ RegisterNetEvent('krs-pizzajob:client:StartJob', function()
 
    -- Warp player into vehicle
    TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
-   
+
    -- Wait to prevent bugs
    Wait(1000)
 
    -- Set vehicle owner
    TriggerEvent("vehiclekeys:client:SetOwner", GetVehicleNumberPlateText(vehicle), vehicle)
+
+   -- SetPlayerInJob
+   StartJob()
 end)
