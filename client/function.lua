@@ -147,7 +147,10 @@ end
 -- Event: Deliver
 RegisterNetEvent('krs-pizzajob:client:deliverPizza', function()
     if HasPizza and Hired and not PizzaDelivered then
-        TriggerServerEvent('krs-pizzajob:server:Payment', DeliveriesCount)
+        local playerCoords = GetEntityCoords(PlayerPedId())
+        local deliveryDistance = #(playerCoords - vector3(newDelivery.x, newDelivery.y, newDelivery.z))
+        local payout = CalculatePayout(deliveryDistance, DeliveriesCount)
+        TriggerServerEvent('krs-pizzajob:server:deliverPizza', DeliveriesCount, payout)
         TriggerEvent('animations:client:EmoteCommandStart', {"knock"})
         PizzaDelivered = true
         QBCore.Functions.Progressbar("knock", "Delivering pizza", 7000, false, false, {
@@ -164,6 +167,7 @@ RegisterNetEvent('krs-pizzajob:client:deliverPizza', function()
             PizzaDelivered = false
             DetachEntity(prop, 1, 1)
             DeleteObject(prop)
+            Notify("You received $"..payout, "success")
             Wait(1000)
             ClearPedSecondaryTask(PlayerPedId())
             Notify("Pizza Delivered. Please wait for your next delivery!", "success") 
@@ -175,3 +179,24 @@ RegisterNetEvent('krs-pizzajob:client:deliverPizza', function()
         Notify("You need the pizza from the car dummy.", "error") 
     end
 end)
+
+-- Calculate Payout with Distance Bonus
+function CalculatePayout(distance, deliveryCount)
+    local basePayout = Config.BasePayout
+    local distanceMultiplier = Config.DistanceMultiplier
+    local additionalPayout = Config.AdditionalPayoutPerDelivery
+
+    -- Calculate payout based on distance
+    local distancePayout = basePayout + (distance * distanceMultiplier)
+
+    -- Calculate additional payout based on delivery count
+    local countPayout = deliveryCount * additionalPayout
+
+    -- Total payout is the sum of distance and delivery count payouts
+    local totalPayout = distancePayout + countPayout
+
+    -- Ensure the payout is an integer value
+    totalPayout = math.floor(totalPayout)
+
+    return totalPayout
+end

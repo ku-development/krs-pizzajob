@@ -54,3 +54,8 @@ RegisterNetEvent('krs-pizzajob:client:StartJob', function()
     PullOutVehicle()
 end)
 
+
+-- Event: Notify
+RegisterNetEvent('krs-pizzajob:client:notify', function (text, type)
+    Notify(text, type)
+end)
