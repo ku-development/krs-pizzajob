@@ -35,3 +35,18 @@ function getLevel(s)
 	end
 end
 
+function ServerNotify(text, type, source)
+    if Config.Notify == 'qb' then
+        TriggerClientEvent("QBCore:Notify", source, text)
+    elseif Config.Notify == 'okok' then
+        exports['okoknotify']:Alert('PizzaJob Information', source, text, 5000, type)
+    elseif Config.Notify == 'ox' then
+        data = {
+            title = 'Information',
+            description = text,
+            type = 'inform',
+            position = 'top',
+        }
+        TriggerClientEvent('ox_lib:notify', source, data)
+    end
+end

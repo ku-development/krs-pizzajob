@@ -6,6 +6,7 @@ Config.Notify = 'qb' -- Supports: ox_lib = 'ox', qb-notify = 'qb', okoknotify = 
 Config.CoreResourceName = 'qb-core' -- if u changed your core name
 Config.Target = 'qb-target' -- target name for exports
 Config.FuelScript = 'qb-fuel' -- suopports cdn-fuel qb-fuel
+Config.ProgressBar = 'qb' -- supports qbcore defult = 'qb', ox_lb = 'ox'
 
 -- General Settings
 Config.JobStartLocation = vector3(334.58251, -1350.742, 32.505485)  -- Example coordinates for job starting location

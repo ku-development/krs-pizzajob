@@ -20,16 +20,6 @@ AddEventHandler('krs-pizzajob:server:EXP', function(deliveryamount, payoutAmount
         local pData = QBCore.Functions.GetPlayer(src)
         local PizzaExp = pData.PlayerData.metadata[MetaDataName]
         pData.Functions.SetMetaData(MetaDataName, (PizzaExp + exp)) -- Edit xp reward here
-        QBCore.Functions.Notify(src, 'You are now '.. getLevel(src) .. ' Level and you have '.. PizzaExp .. " EXP", 'info')
+        ServerNotify('You are now '.. getLevel(src) .. ' Level and you have '.. PizzaExp .. " EXP", 'info', src)
 end)
 
-
-RegisterCommand("openskillsui", function()
-    TriggerClientEvent("openSkillsUI", source)
-end, false)
--- server.lua
-RegisterServerEvent("skillsCallback")
-AddEventHandler("skillsCallback", function(data)
-    -- Handle the data received from the NUI callback
-    -- You can add more logic here based on the received data
-end)
