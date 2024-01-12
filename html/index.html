@@ -7,6 +7,22 @@
     <script src="main.js"></script>
 </head>
 <body>
+    <script>
+        // NUI callback function
+        window.addEventListener('message', (event) => {
+            const data = event.data;
+    
+            if (data && data.openSkillsUI) {
+                openSkillsUI();
+            }
+        });
+    
+        // Function to open the skills UI
+        function openSkillsUI() {
+            // Your logic to display the UI here
+            document.getElementById("container").style.display = "block";
+        }
+    </script>
     <div id="container"></div>
 </body>
 </html>

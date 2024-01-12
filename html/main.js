@@ -1,29 +1,54 @@
-$(document).ready(function() {
-    // Simulated player skills data
-    const playerSkills = {
-        "Programming": 80,
-    };
 
-    // Display player skills with progress bars
-    displayPlayerSkills(playerSkills);
-});
 
+
+
+
+// Dummy skills data (replace this with your actual logic to fetch player skills)
+const playerSkills = {
+    skill1: 50,
+    skill2: 75,
+    skill3: 30,
+    // Add more skills as needed
+};
+
+// Dummy function to display player skills (replace this with your actual display logic)
 function displayPlayerSkills(skills) {
     const container = document.getElementById("container");
 
-    // Create a progress bar for each skill
-    Object.entries(skills).forEach(([skill, value]) => {
-        const progressBar = document.createElement("div");
-        progressBar.classList.add("progress-bar");
+    // Create progress bars for each skill
+    for (const skill in skills) {
+        const progressContainer = document.createElement("div");
+        progressContainer.className = "progress-container";
 
         const label = document.createElement("span");
-        label.textContent = `${skill}: ${value}%`;
+        label.textContent = `${skill}: ${skills[skill]}`;
 
-        const progress = document.createElement("div");
-        progress.style.width = `${value}%`;
+        const progressBar = document.createElement("div");
+        progressBar.className = "progress-bar";
+        progressBar.style.width = `${skills[skill]}%`;
 
-        progressBar.appendChild(label);
-        progressBar.appendChild(progress);
-        container.appendChild(progressBar);
-    });
+        progressContainer.appendChild(label);
+        progressContainer.appendChild(progressBar);
+
+        container.appendChild(progressContainer);
+    }
 }
+
+// Dummy function to simulate updating player skills (replace this with your actual logic)
+function updatePlayerSkills() {
+    // Simulate updating player skills (e.g., fetching from the server)
+    const updatedSkills = {
+        skill1: Math.floor(Math.random() * 100),
+        skill2: Math.floor(Math.random() * 100),
+        skill3: Math.floor(Math.random() * 100),
+        // Add more skills as needed
+    };
+
+    // Update the UI with the new skills data
+    displayPlayerSkills(updatedSkills);
+}
+
+// Trigger an update when the page loads
+document.addEventListener("DOMContentLoaded", () => {
+    updatePlayerSkills();
+});
