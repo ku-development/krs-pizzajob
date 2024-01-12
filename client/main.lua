@@ -82,5 +82,5 @@ RegisterNetEvent('krs-pizzajob:client:StartJob', function()
    TriggerEvent("vehiclekeys:client:SetOwner", GetVehicleNumberPlateText(vehicle), vehicle)
 
    -- SetPlayerInJob
-   StartJob()
+   NextDelivery()
 end)

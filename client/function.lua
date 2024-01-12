@@ -25,91 +25,24 @@ function Notify(text)
     end
 end
 
-local blipColor = 3  -- Blip color (3 is yellow)
-local blipSprite = 1  -- Blip sprite (1 is standard location blip)
-local deliveryBlips = {}
-
-function StartJob()
-    for _, location in ipairs(deliveryLocations) do
-        local blip = AddBlipForCoord(location.x, location.y, location.z)
-        SetBlipSprite(blip, blipSprite)
-        SetBlipColour(blip, blipColor)
-        SetBlipDisplay(blip, 4)  -- Display blip always on the map
-        SetBlipScale(blip, 0.8)  -- Set blip size
-        SetBlipAsShortRange(blip, true)  -- Show blip on the minimap even at a distance
+function NextDelivery()
+    if not activeOrder then
+        newDelivery = Config.JobLocs[math.random(1, #Config.JobLocs)]
+        JobBlip = AddBlipForCoord(newDelivery.x, newDelivery.y, newDelivery.z)
+        SetBlipSprite(JobBlip, 1)
+        SetBlipDisplay(JobBlip, 4)
+        SetBlipScale(JobBlip, 0.8)
+        SetBlipFlashes(JobBlip, true)
+        SetBlipAsShortRange(JobBlip, true)
+        SetBlipColour(JobBlip, 2)
+        SetBlipRoute(JobBlip, true)
+        SetBlipRouteColour(JobBlip, 2)
         BeginTextCommandSetBlipName("STRING")
-        AddTextComponentString("Delivery Location")
-        EndTextCommandSetBlipName(blip)
-
-        table.insert(deliveryBlips, blip)
-    end
-end
-
-function FinishDelivery()
-    -- Assume you have a function that calculates the index of the finished delivery
-    local finishedDeliveryIndex = CalculateFinishedDeliveryIndex()
-
-    if finishedDeliveryIndex then
-        -- Get the blip associated with the finished delivery
-        local finishedDeliveryBlip = deliveryBlips[finishedDeliveryIndex]
-
-        -- Remove the old blip
-        RemoveBlip(finishedDeliveryBlip)
-
-        -- Add a new blip for the next delivery (if available)
-        local nextDeliveryIndex = CalculateNextDeliveryIndex()
-        if nextDeliveryIndex then
-            local nextDeliveryLocation = deliveryLocations[nextDeliveryIndex]
-            local newBlip = AddBlipForCoord(nextDeliveryLocation.x, nextDeliveryLocation.y, nextDeliveryLocation.z)
-            SetBlipSprite(newBlip, blipSprite)
-            SetBlipColour(newBlip, blipColor)
-            SetBlipDisplay(newBlip, 4)
-            SetBlipScale(newBlip, 0.8)
-            SetBlipAsShortRange(newBlip, true)
-            BeginTextCommandSetBlipName("STRING")
-            AddTextComponentString("Delivery Location")
-            EndTextCommandSetBlipName(newBlip)
-
-            -- Update the deliveryBlips table
-            deliveryBlips[finishedDeliveryIndex] = newBlip
-        else
-            print("No more deliveries available.")
-        end
-    else
-        print("Failed to determine finished delivery index.")
-    end
-end
-
--- Placeholder data for delivery status
-local deliveryStatus = {
-    {finished = false},  
-    {finished = false},
-    -- Add more entries as needed
-}
-
-function CalculateNextDeliveryIndex()
-    for i, delivery in ipairs(deliveryStatus) do
-        if not delivery.finished then
-            return i
-        end
-    end
-    return nil  -- No more deliveries available
-end
-
-function CalculateFinishedDeliveryIndex()
-    for i, delivery in ipairs(deliveryStatus) do
-        if delivery.finished then
-            return i
-        end
-    end
-    return nil  -- No finished deliveries found
-end
-
--- Example: Mark a delivery as finished (you can replace this with your actual logic)
-function MarkDeliveryAsFinished(deliveryIndex)
-    if deliveryStatus[deliveryIndex] then
-        deliveryStatus[deliveryIndex].finished = true
-    else
-        print("Invalid delivery index.")
+        AddTextComponentSubstringPlayerName("Next Customer")
+        EndTextCommandSetBlipName(JobBlip)
+        exports['qb-target']:AddCircleZone("deliverZone", vector3(newDelivery.x, newDelivery.y, newDelivery.z), 1.3,{ name = "deliverZone", debugPoly = false, useZ=true, }, { options = { { type = "client", event = "randol_pizzajob:client:deliverPizza", icon = "fa-solid fa-pizza-slice", label = "Deliver Pizza"}, }, distance = 1.5 })
+        activeOrder = true
+        Notify('You have a new delivery!')
+       
     end
 end
