@@ -38,6 +38,14 @@ Config.PositiveRatingThreshold = 4.5  -- Minimum rating for additional perks or 
 Config.EnableLeaderboard = true  -- Enable or disable the leaderboard
 Config.LeaderboardLimit = 10  -- Number of top performers to display on the leaderboard
 
+-- Timer
+Config.DeliveryTimer = 3600 -- set the max time per delveiry if delviery not in time will give u a new one
+Config.ReetDeliveryCount = true -- if fail will reset delvery count so player will get less money
+Config.TakeMoney = true -- if true will take money from player on fail
+Config.TakeMoneyAmount = 500 -- ammoiunt of money on lost
+Config.TakeEXP = true -- will take exp from the player only enable if xp system is enabled
+Config.ExpTakeAmount = 10 -- amount to take
+
 -- EXP System
 Config.XP = {
     Use = false, -- Toggles xp system on or off; true = on, false = off

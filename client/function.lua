@@ -8,6 +8,7 @@ local ownsVan = false
 local activeOrder = false
 local JobBlip = nil
 local newDelivery = {}
+local time = Config.DeliveryTimer
 
 -- Function to send notifications
 function Notify(text, type)
@@ -168,6 +169,7 @@ RegisterNetEvent('krs-pizzajob:client:deliverPizza', function()
             DetachEntity(prop, 1, 1)
             DeleteObject(prop)
             Notify("You received $"..payout, "success")
+            time = Config.DeliveryTimer
             Wait(1000)
             ClearPedSecondaryTask(PlayerPedId())
             Notify("Pizza Delivered. Please wait for your next delivery!", "success") 
@@ -200,3 +202,60 @@ function CalculatePayout(distance, deliveryCount)
 
     return totalPayout
 end
+-- Function Reset After no time
+function CompleteDelivery(t)
+    activeOrder = false
+    time = Config.DeliveryTimer
+    if Config.ReetDeliveryCount then
+        DeliveriesCount = 0
+    end
+    Notify('You Faild to deliver the pizza in time, giving you new delivery', "error")
+    TriggerServerEvent('krs-pizzajobL:server:Fail')
+    Wait(1000)
+    NextDelivery()
+end
+
+-- Thread: Timer
+Citizen.CreateThread(function()
+    while true do
+        local sleep = 1000
+        if Hired then
+            if time > 0 then
+                sleep = 0 -- Wait for 1 second
+                SetTextFont(0)
+                SetTextProportional(1)
+                SetTextScale(0.5, 0.5) -- Adjust the scale for better visibility
+
+                if time > 15 then
+                    SetTextColour(255, 255, 0, 255) -- Yellow color for more time
+                else
+                    SetTextColour(255, 0, 0, 255) -- Red color for less time
+                end
+
+                SetTextCentre(true)
+                SetTextDropshadow(0, 0, 0, 0, 255)
+                SetTextEdge(1, 0, 0, 0, 255)
+                SetTextDropShadow()
+                SetTextOutline()
+                BeginTextCommandDisplayText("STRING")
+                AddTextComponentSubstringPlayerName('Time remaining: ' .. time .. ' seconds')
+                EndTextCommandDisplayText(0.5, 0.95)
+            else
+                CompleteDelivery(false) -- Function to handle delivery completion (failed)
+            end
+        end
+
+        Citizen.Wait(sleep)
+    end
+end)
+
+-- Thread: Timer
+Citizen.CreateThread(function()
+    while true do
+        Wait(1000)
+        if Hired then
+            time = time - 1 -- Decrement the timer
+        end
+    end
+end)
+         

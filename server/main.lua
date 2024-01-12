@@ -23,3 +23,16 @@ AddEventHandler('krs-pizzajob:server:EXP', function(deliveryamount, payoutAmount
         ServerNotify('You are now '.. getLevel(src) .. ' Level and you have '.. PizzaExp .. " EXP", 'info', src)
 end)
 
+RegisterNetEvent("krs-pizzajobL:server:Fail")
+AddEventHandler("krs-pizzajobL:server:Fail", function()
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    local pData = QBCore.Functions.GetPlayer(src)
+    local PizzaExp = pData.PlayerData.metadata[MetaDataName]
+    if Config.TakeMoney then
+        Player.Functions.RemoveMoney(Config.PayCheckType, Config.TakeMoneyAmount)
+    end
+    if Config.TakeEXP then
+        pData.Functions.SetMetaData(MetaDataName, (PizzaExp - Config.ExpTakeAmount)) -- Edit xp reward here
+    end
+end)

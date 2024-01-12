@@ -59,3 +59,4 @@ end)
 RegisterNetEvent('krs-pizzajob:client:notify', function (text, type)
     Notify(text, type)
 end)
+
