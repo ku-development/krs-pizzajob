@@ -10,11 +10,11 @@ local JobBlip = nil
 local newDelivery = {}
 
 -- Function to send notifications
-function Notify(text)
+function Notify(text, type)
     if Config.Notify == 'qb' then
         QBCore.Functions.Notify(text)
     elseif Config.Notify == 'okok' then
-        exports['okoknotify']:Alert('PizzaJob Information', text, 5000, 'info')
+        exports['okoknotify']:Alert('PizzaJob Information', text, 5000, type)
     elseif Config.Notify == 'ox' then
         lib.notify({
             title = 'Information',
@@ -44,7 +44,7 @@ function NextDelivery()
         BeginTextCommandSetBlipName("STRING")
         AddTextComponentSubstringPlayerName("Next Customer")
         EndTextCommandSetBlipName(JobBlip)
-        exports['qb-target']:AddCircleZone("deliverZone", vector3(newDelivery.x, newDelivery.y, newDelivery.z), 1.3, { name = "deliverZone", debugPoly = false, useZ=true, }, { options = { { type = "client", event = "randol_pizzajob:client:deliverPizza", icon = "fa-solid fa-pizza-slice", label = "Deliver Pizza" }, }, distance = 1.5 })
+        exports['qb-target']:AddCircleZone("deliverZone", vector3(newDelivery.x, newDelivery.y, newDelivery.z), 1.3, { name = "deliverZone", debugPoly = false, useZ=true, }, { options = { { type = "client", event = "krs-pizzajob:client:deliverPizza", icon = "fa-solid fa-pizza-slice", label = "Deliver Pizza" }, }, distance = 1.5 })
         activeOrder = true
         Notify('You have a new delivery!')
     end
@@ -52,7 +52,7 @@ end
 
 function PullOutVehicle()
     local coords = Config.VehicleSpawn
-    QBCore.Functions.SpawnVehicle(Config.Vehicle, function(pizzaCar)
+    QBCore.Functions.SpawnVehicle(Config.JobVehicle, function(pizzaCar)
         SetVehicleNumberPlateText(pizzaCar, "PIZZA" .. tostring(math.random(1000, 9999)))
         SetVehicleColours(pizzaCar, 111, 111)
         SetVehicleDirtLevel(pizzaCar, 1)
@@ -142,3 +142,36 @@ function FinishWork()
         end
     end
 end
+
+
+-- Event: Deliver
+RegisterNetEvent('krs-pizzajob:client:deliverPizza', function()
+    if HasPizza and Hired and not PizzaDelivered then
+        TriggerServerEvent('krs-pizzajob:server:Payment', DeliveriesCount)
+        TriggerEvent('animations:client:EmoteCommandStart', {"knock"})
+        PizzaDelivered = true
+        QBCore.Functions.Progressbar("knock", "Delivering pizza", 7000, false, false, {
+            disableMovement = true,
+            disableCarMovement = true,
+            disableMouse = false,
+            disableCombat = true,
+        }, {}, {}, {}, function()
+            DeliveriesCount = DeliveriesCount + 1
+            RemoveBlip(JobBlip)
+            exports['qb-target']:RemoveZone("deliverZone")
+            HasPizza = false
+            activeOrder = false
+            PizzaDelivered = false
+            DetachEntity(prop, 1, 1)
+            DeleteObject(prop)
+            Wait(1000)
+            ClearPedSecondaryTask(PlayerPedId())
+            Notify("Pizza Delivered. Please wait for your next delivery!", "success") 
+            SetTimeout(5000, function()    
+                NextDelivery()
+            end)
+        end)
+    else
+        Notify("You need the pizza from the car dummy.", "error") 
+    end
+end)

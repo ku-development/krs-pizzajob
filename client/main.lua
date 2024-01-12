@@ -21,18 +21,11 @@ CreateThread(function()
     exports[Config.Target]:AddTargetEntity(npcPed, {
         options = {
             {
-                num = 1,
                 type = "client",
                 event = "krs-pizzajob:client:StartJob",
                 icon = 'fas fa-briefcase',
                 label = 'Start Job',
-                targeticon = 'fas fa-briefcase',
-                action = function(entity)
-                    TriggerEvent('krs-pizzajob:client:StartJob')
-                end,
-                canInteract = function(entity, distance, data)
-                    return true
-                end,
+
             }
         },
         distance = 2.5,
@@ -58,19 +51,6 @@ end)
 
 -- Event: Start Job
 RegisterNetEvent('krs-pizzajob:client:StartJob', function()
-    local vehicleModel = Config.JobVehicle
-
-    RequestModel(vehicleModel)
-    while not HasModelLoaded(vehicleModel) do
-        Wait(500)
-    end
-
-    local playerPed = PlayerPedId()
-    local vehicle = CreateVehicle(vehicleModel, GetEntityCoords(playerPed), GetEntityHeading(playerPed), true, false)
-
-    TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
-    Wait(1000)
-
-    TriggerEvent("vehiclekeys:client:SetOwner", GetVehicleNumberPlateText(vehicle), vehicle)
-    StartJob()
+    PullOutVehicle()
 end)
+
