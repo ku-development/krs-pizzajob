@@ -16,8 +16,11 @@ Config.TimeLimitPerDelivery = 300  -- Time limit for each delivery in seconds (3
 Config.VehicleSpawn = vector4(330.05422, -1344.015, 32.403095, 52.768848)
 
 -- Payout Settings
-Config.BasePayout = 50  -- Base payout for deliveries
-Config.DistanceMultiplier = 2.5  -- Multiplier for payout based on distance
+Config.BasePayout = 500  -- Base payout for deliveries
+Config.DistanceMultiplier = 5  -- Multiplier for payout based on distance
+Config.DistanceBonusMultiplier = 3 -- Multiplier for payout based on distance
+Config.AdditionalPayoutPerDelivery = 6 -- Multiplier for payout based on distance
+Config.PayCheckType = "cash" -- types: 'cash', 'bank'
 
 -- UI Settings
 Config.ShowJobUI = true  -- Set to false to disable job UI
@@ -34,6 +37,23 @@ Config.PositiveRatingThreshold = 4.5  -- Minimum rating for additional perks or 
 Config.EnableLeaderboard = true  -- Enable or disable the leaderboard
 Config.LeaderboardLimit = 10  -- Number of top performers to display on the leaderboard
 
+-- EXP System
+Config.XP = {
+    Use = false, -- Toggles xp system on or off; true = on, false = off
+    Command = true, -- Toggles xp command on or off; true = on, false = off
+    MetaDataName = 'pizzaexp', -- The name of your xp if you edit this make sure to also edit the line included in readme this is also your /miningxp command
+    Levels = { -- Change your xp requirements here to suit your server set these as high as you want preset xp increase = (xp / 0.8)
+        1000, -- level 2 
+        1250, -- level 3 
+        1562, -- level 4
+        1953, -- level 5
+        2441, -- level 6 
+        3051, -- level 7
+        3814, -- level 8
+        4768, -- level 9
+        5960, -- level 10
+    }
+}
 
 Config.JobLocs = { -- Random delivery houses.
     vector3(224.11, 513.52, 140.92),
