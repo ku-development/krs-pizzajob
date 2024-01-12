@@ -4,9 +4,11 @@ Config = {}
 Config.Core = 'qb' -- Supports only qb for now
 Config.Notify = 'qb' -- Supports: ox_lib = 'ox', qb-notify = 'qb', okoknotify = 'okok'
 Config.CoreResourceName = 'qb-core' -- if u changed your core name
+Config.Target = 'qb-target' -- target name for exports
 
 -- General Settings
 Config.JobStartLocation = vector3(123.45, 67.89, 45.67)  -- Example coordinates for job starting location
+Config.NpcStart = 'a_m_m_prolhost_01' -- Replace with the desired NPC model
 Config.JobEndLocation = vector3(987.65, 43.21, 76.54)    -- Example coordinates for job ending location
 Config.JobVehicle = "pizza_scooter"  -- Example vehicle model for pizza delivery
 Config.TimeLimitPerDelivery = 300  -- Time limit for each delivery in seconds (300 seconds = 5 minutes)
@@ -30,3 +32,16 @@ Config.PositiveRatingThreshold = 4.5  -- Minimum rating for additional perks or 
 Config.EnableLeaderboard = true  -- Enable or disable the leaderboard
 Config.LeaderboardLimit = 10  -- Number of top performers to display on the leaderboard
 
+Config.Targets = {
+    {
+        name = "npc_pizza_job",
+        label = "Pizza Job NPC",
+        icon = "far fa-star",
+        job = {"all"},  -- Allow interaction for all jobs
+        distance = 1.5,
+        action = function()
+            TriggerEvent("krs-pizzajob:startJob")
+        end,
+    },
+    -- Add other targets as needed
+}
