@@ -12,7 +12,8 @@ Config.ProgressBar = 'qb' -- supports qbcore defult = 'qb', ox_lb = 'ox'
 Config.JobStartLocation = vector3(334.58251, -1350.742, 32.505485)  -- Example coordinates for job starting location
 Config.NpcStart = 'a_m_m_prolhost_01' -- Replace with the desired NPC model
 Config.JobEndLocation = vector3(334.58251, -1350.742, 32.505485)    -- Example coordinates for job ending location
-Config.JobVehicle = "t20"  -- Example vehicle model for pizza delivery
+Config.JobVehicle = "foodbike"  -- vehicle model for pizza delivery
+Config.UseDefultVehicles = true -- if u use our vehicles that are in stream to set the livery
 Config.TimeLimitPerDelivery = 300  -- Time limit for each delivery in seconds (300 seconds = 5 minutes)
 Config.VehicleSpawn = vector4(330.05422, -1344.015, 32.403095, 52.768848)
 

@@ -53,10 +53,14 @@ end
 
 function PullOutVehicle()
     local coords = Config.VehicleSpawn
+    
     QBCore.Functions.SpawnVehicle(Config.JobVehicle, function(pizzaCar)
         SetVehicleNumberPlateText(pizzaCar, "PIZZA" .. tostring(math.random(1000, 9999)))
         SetVehicleColours(pizzaCar, 111, 111)
         SetVehicleDirtLevel(pizzaCar, 1)
+        if Config.UseDefultVehicles then
+            SetVehicleLivery(pizzaCar, 3)
+        end
         DecorSetFloat(pizzaCar, "pizza_job", 1)
         TaskWarpPedIntoVehicle(PlayerPedId(), pizzaCar, -1)
         TriggerEvent("vehiclekeys:client:SetOwner", GetVehicleNumberPlateText(pizzaCar))
