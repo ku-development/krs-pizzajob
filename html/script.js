@@ -3,6 +3,9 @@ let isMenuOpen = false;
 
 function OpenMenu() {
     $("#main-container").fadeIn(400);
+    $("#main-page").fadeIn(400);
+    $("#main-page-one").fadeIn(400);
+    $("#main-page-two").fadeIn(400);
     const startButton = document.querySelector('.start-button');
     const levelElement = document.getElementById('level');
     const experienceElement = document.getElementById('experience');
