@@ -1,4 +1,4 @@
-## <img src="https://media.discordapp.net/attachments/1128724459478601888/1196040740871098458/image-removebg-preview_1.png?ex=65b62ebd&is=65a3b9bd&hm=2189f3d25a3492b5bc70dcfd5d179420f884bd62259a3b46169f7032e53e6672&=&format=webp&quality=lossless&width=30&height=30" alt="KRS-PizzaJob Icon" style="vertical-align: text-bottom;" width="40" height="40"/> KRS-PizzaJob
+## <img src="https://media.discordapp.net/attachments/1128724459478601888/1196040740871098458/image-removebg-preview_1.png?ex=65b62ebd&is=65a3b9bd&hm=2189f3d25a3492b5bc70dcfd5d179420f884bd62259a3b46169f7032e53e6672&=&format=webp&quality=lossless&width=40&height=40" alt="KRS-PizzaJob Icon" style="vertical-align: text-bottom;" width="40" height="40"/> KRS-PizzaJob
 
 ## Description
 
