@@ -60,3 +60,15 @@ RegisterNetEvent('krs-pizzajob:client:notify', function (text, type)
     Notify(text, type)
 end)
 
+Citizen.CreateThread(function ()
+    SendNUIMessage({ type = 'closeNui' })
+end)
+
+
+RegisterCommand('openui', function()
+    SendNUIMessage({ type = 'openNui' })
+end, false)
+
+RegisterCommand('closeui', function()
+    SendNUIMessage({ type = 'closeNui' })
+end, false)

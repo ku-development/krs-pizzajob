@@ -7,8 +7,10 @@ description  'A fully immersive pizzajob job.'
 author       'KurdY'
 
 client_scripts {
-    'client/*.lua'
+    'client/*.lua',
 }
+
+ui_page 'html/index.html'
 
 server_scripts {
     'server/*.lua'
@@ -28,7 +30,9 @@ files {
 	'stream/dlctext.meta',
 	'stream/vehiclelayouts.meta',
 	'html/index.html',
-	'html/style.css'
+	'html/style.css',
+	'html/jquery-3.4.1.min.js',
+    'html/script.js',
 }
  
 data_file 'HANDLING_FILE' 'stream/handling.meta'
