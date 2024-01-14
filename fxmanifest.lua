@@ -27,6 +27,8 @@ files {
 	'stream/handling.meta',
 	'stream/dlctext.meta',
 	'stream/vehiclelayouts.meta',
+	'html/index.html',
+	'html/style.css'
 }
  
 data_file 'HANDLING_FILE' 'stream/handling.meta'
