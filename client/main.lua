@@ -22,7 +22,7 @@ CreateThread(function()
         options = {
             {
                 type = "client",
-                event = "krs-pizzajob:client:StartJob",
+                event = "krs-pizzajob:client:StartJobFirst",
                 icon = 'fas fa-briefcase',
                 label = 'Start Job',
 
@@ -32,6 +32,14 @@ CreateThread(function()
     })
 end)
 
+RegisterNetEvent("krs-pizzajob:client:StartJobFirst")
+AddEventHandler("krs-pizzajob:client:StartJobFirst", function ()
+    if Config.ShowJobUI then
+        SendNUIMessage({ type = 'openNui' })
+    else
+        TriggerEvent('krs-pizzajob:client:StartJob')
+    end
+end)
 -- Decor Registration Thread
 CreateThread(function()
     DecorRegister("pizza_job", 1)
