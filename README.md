@@ -1,10 +1,12 @@
-## <img src="https://media.discordapp.net/attachments/1128724459478601888/1196040740871098458/image-removebg-preview_1.png?ex=65b62ebd&is=65a3b9bd&hm=2189f3d25a3492b5bc70dcfd5d179420f884bd62259a3b46169f7032e53e6672&=&format=webp&quality=lossless&width=40&height=40" alt="KRS-PizzaJob Icon" style="vertical-align: text-bottom;" width="40" height="40"/> KRS-PizzaJob
+# KRS-PizzaJob
+![Preview Image](https://media.discordapp.net/attachments/1128724459478601888/1196040740871098458/image-removebg-preview_1.png?ex=65b62ebd&is=65a3b9bd&hm=2189f3d25a3492b5bc70dcfd5d179420f884bd62259a3b46169f7032e53e6672&=&format=webp&quality=lossless&width=618&height=488)
 
 ## Description
 
 Enhance the immersive experience on your FiveM server by introducing a realistic and interactive pizza delivery job for players. This open-source script allows players to take on the role of a pizza delivery driver, delivering orders to various locations across the city.
+
 ## 📖 ReadMe!
-script isnt ready yet!
+script isnt ready yet
 
 ## 🎥 Preview
 - [youtube](Soon)
