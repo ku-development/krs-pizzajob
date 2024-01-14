@@ -3,6 +3,9 @@
 ## Description
 
 Enhance the immersive experience on your FiveM server by introducing a realistic and interactive pizza delivery job for players. This open-source script allows players to take on the role of a pizza delivery driver, delivering orders to various locations across the city.
+## 📖 ReadMe!
+script isnt ready yet!
+
 ## 🎥 Preview
 - [youtube](Soon)
 - [UI](https://media.discordapp.net/attachments/1195317892103802930/1195991283261509713/image.png?ex=65b600ae&is=65a38bae&hm=34d6f822200a57a0f8f6fc5050c297869445945bbdba25ad26c52201f717c4c8&=&format=webp&quality=lossless&width=814&height=462) 
