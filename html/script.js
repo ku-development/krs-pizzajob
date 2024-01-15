@@ -22,7 +22,7 @@ function OpenMenu() {
                     <p id="customerName">Name: Loading...</p>
                     <p id="customerAddress">Address: Loading...</p>
                 </div>
-                <div class="start-button" onclick="startButtonClick()">Start</div>
+                <div class="start-button" onclick="StartDelivery()">Start</div>
                 <div class="delivery-guy"></div>
 
                 <div class="stats" id="main-page-two">
