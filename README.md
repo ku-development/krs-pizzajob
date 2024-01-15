@@ -10,7 +10,7 @@ script isnt ready yet
 
 ## 🎥 Preview
 - [youtube](Soon)
-- [UI](https://media.discordapp.net/attachments/1195317892103802930/1195991283261509713/image.png?ex=65b600ae&is=65a38bae&hm=34d6f822200a57a0f8f6fc5050c297869445945bbdba25ad26c52201f717c4c8&=&format=webp&quality=lossless&width=814&height=462) 
+- [UI](https://media.discordapp.net/attachments/1195317892103802930/1196379152702513182/image.png?ex=65b769e9&is=65a4f4e9&hm=4a19d75201abf506dc8572e4949ea4b27dd9bd1e3f06ec3ae6ff1772ca0d5077&=&format=webp&quality=lossless&width=814&height=484) 
 ofc not finished ui..
 
 ## 🍕 Features
