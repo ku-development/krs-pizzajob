@@ -32,14 +32,17 @@ CreateThread(function()
     })
 end)
 
+-- Event: Check Configs -- start with ui or not
 RegisterNetEvent("krs-pizzajob:client:StartJobFirst")
 AddEventHandler("krs-pizzajob:client:StartJobFirst", function ()
     if Config.ShowJobUI then
         SendNUIMessage({ type = 'openNui' })
+        SetNuiFocus(true, true)
     else
         TriggerEvent('krs-pizzajob:client:StartJob')
     end
 end)
+
 -- Decor Registration Thread
 CreateThread(function()
     DecorRegister("pizza_job", 1)
@@ -80,3 +83,15 @@ end, false)
 RegisterCommand('closeui', function()
     SendNUIMessage({ type = 'closeNui' })
 end, false)
+
+
+-- Ui Functions:
+
+RegisterNUICallback("CloseUi", function(data)
+    SetNuiFocus(false,false)
+end)
+
+RegisterNUICallback("Start", function(data)
+    SetNuiFocus(false,false)
+    PullOutVehicle()
+end)
