@@ -1,3 +1,4 @@
+print("^2KRS PizzaJob ^7v^42^7.^44 ^7- ^2PizzaJob Script by ^1KRSathy^7")
 local QBCore = exports[Config.CoreResourceName]:GetCoreObject()
 local MetaDataName = Config.XP.MetaDataName
 
