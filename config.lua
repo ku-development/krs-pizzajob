@@ -47,6 +47,17 @@ Config.TakeMoneyAmount = 500 -- ammoiunt of money on lost
 Config.TakeEXP = true -- will take exp from the player only enable if xp system is enabled
 Config.ExpTakeAmount = 10 -- amount to take
 
+-- Random Tips
+Config.RandomItem = true -- gives a random item as a tip
+Config.RandomItemChance = 50 -- % to get any item at all
+Config.RandomItems = {
+    ['goldcoin'] = math.random(0,3) -- if u get 0 system will return and give nothing..
+    -- ['itemname'] = amount only ints not floats!
+}
+Config.RandomMoney = true -- if true tips can be given as random money ofc u can add them both..
+Config.RandomMoneyAmount = { min = 100, max = 300 } -- amount for the tip!
+Config.RandomMoneyType = 'cash' -- supported 'cash', 'bank'
+
 -- EXP System
 Config.XP = {
     Use = false, -- Toggles xp system on or off; true = on, false = off
@@ -62,6 +73,7 @@ Config.XP = {
         3814, -- level 8
         4768, -- level 9
         5960, -- level 10
+        -- this will not work for now inorder to change levels go to server/functions.lua
     }
 }
 

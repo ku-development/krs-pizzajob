@@ -6,6 +6,7 @@ RegisterNetEvent('krs-pizzajob:server:deliverPizza')
 AddEventHandler('krs-pizzajob:server:deliverPizza', function(deliveryamount, payoutAmount)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
+    CheckAllConfigs(src)
     if Config.XP.Use then
         local exp = getxp(source)
         local pData = QBCore.Functions.GetPlayer(src)

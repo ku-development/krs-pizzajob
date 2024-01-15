@@ -1,5 +1,6 @@
 local QBCore = exports[Config.CoreResourceName]:GetCoreObject()
 local MetaDataName = Config.XP.MetaDataName
+local data = {}
 
 function getxp(s)
 	local src = s
@@ -49,4 +50,21 @@ function ServerNotify(text, type, source)
         }
         TriggerClientEvent('ox_lib:notify', source, data)
     end
+end
+
+function CheckAllConfigs(source)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    if Config.RandomItem and Config.RandomItemChance and math.random(1, 100) <= Config.RandomItemChance then
+        local randomItem = GetRandomItem()
+        Player.Functions.AddItem(randomItem.item, randomItem.amount, 0, {}) -- Assuming slot and info are not used here
+    end
+    if Config.RandomMoney then
+        Player.Functions.AddMoney(Config.RandomMoneyType, math.random(Config.RandomMoneyAmount.min, Config.RandomMoneyAmount.max))
+    end
+end
+
+function GetRandomItem()
+    local itemName, amount = next(Config.RandomItems)
+    return { item = itemName, amount = amount }
 end
