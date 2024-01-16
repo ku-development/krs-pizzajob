@@ -7,8 +7,8 @@
 - Create Rating System 
 
 ## Install: 
-make sure to add in your qbcore/server/player.lua
-``` PlayerData.metadata['pizzaexp'] = PlayerData.metadata['pizzaexp'] or 0 ```
+- make sure to add in your qbcore/server/player.lua
+- ``` PlayerData.metadata['pizzaexp'] = PlayerData.metadata['pizzaexp'] or 0 ```
 
 ## 💿 Description
 
