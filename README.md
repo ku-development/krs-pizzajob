@@ -15,7 +15,7 @@ script is finished!
 
 ## 🎥 Preview
 - [youtube](Soon)
-- [UI](https://media.discordapp.net/attachments/1195317892103802930/1196854554738827274/image.png?ex=65b924aa&is=65a6afaa&hm=72cc53e9735169e169a74826b780b06f5dc2b52df284b22d81f82754061ddde8&=&format=webp&quality=lossless&width=484&height=484) 
+- [UI](https://media.discordapp.net/attachments/1195317892103802930/1196854554738827274/image.png?ex=65b924aa&is=65a6afaa&hm=72cc53e9735169e169a74826b780b06f5dc2b52df284b22d81f82754061ddde8&=&format=webp&quality=lossless&width=814&height=457) 
 
 
 ## 🍕 Features
