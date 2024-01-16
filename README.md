@@ -12,6 +12,8 @@ Enhance the immersive experience on your FiveM server by introducing a realistic
 
 ## 📖 ReadMe!
 script is finished!
+make sure to add in your qbcore/server/player.lua
+    PlayerData.metadata['pizzaexp'] = PlayerData.metadata['pizzaexp'] or 0
 
 ## 🎥 Preview
 - [youtube](Soon)
