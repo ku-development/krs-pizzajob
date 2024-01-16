@@ -48,8 +48,26 @@ function OpenMenu() {
     const experienceElement = document.getElementById('experience');
     const deliveryGuy = document.querySelector('.delivery-guy');
     const customers = [
-        { name: "John Doe", address: "123 Main St" },
-        { name: "Jane Smith", address: "456 Oak St" },
+        { name: "Michael Johnson", address: "789 Grove St" },
+        { name: "Trevor Williams", address: "1011 Sandy Shores Ave" },
+        { name: "Franklin Davis", address: "131 Vinewood Blvd" },
+        { name: "Amanda White", address: "567 Rockford Dr" },
+        { name: "Lamar Brown", address: "246 Forum Dr" },
+        { name: "Catalina Rodriguez", address: "891 Verdant Bluffs" },
+        { name: "Tommy Vercetti", address: "332 Ocean Dr" },
+        { name: "Niko Bellic", address: "441 Broker Ave" },
+        { name: "Claude Speed", address: "667 Staunton Ave" },
+        { name: "CJ Johnson", address: "555 Ganton St" },
+        { name: "Natalia Faustin", address: "775 Hove Beach Ave" },
+        { name: "Misty Muller", address: "223 Misty Ln" },
+        { name: "Roman Petrov", address: "369 Mohawk Ave" },
+        { name: "Cesar Hernandez", address: "502 Doherty St" },
+        { name: "Brucie Kibbutz", address: "808 Burlesque" },
+        { name: "Wade Hebert", address: "212 Paleto Blvd" },
+        { name: "Chop Dogg", address: "665 Grove St" },
+        { name: "Molly Schultz", address: "999 Eclipse Blvd" },
+        { name: "Packie McReary", address: "777 South Mo Milton Dr" },
+        { name: "Tracey De Santa", address: "444 Portola Dr" }
     ];
 
     const randomCustomer = customers[Math.floor(Math.random() * customers.length)];
