@@ -262,3 +262,29 @@ Citizen.CreateThread(function()
         end
     end
 end)
+
+-- Function: GetCallBack
+function GetExp()
+    local p = promise.new()
+    QBCore.Functions.TriggerCallback('krs-PizzaJob:CallBacks:getexp', function(result)
+        p:resolve(result)
+    end, cb)
+    return Citizen.Await(p)
+end
+
+function GetNextLevelIn()
+    local p = promise.new()
+    QBCore.Functions.TriggerCallback('krs-PizzaJob:CallBacks:getnextlevelin', function(result)
+        p:resolve(result)
+    end, cb)
+    return Citizen.Await(p)
+end
+
+function GetLevel()
+    local QBCore = exports['qb-core']:GetCoreObject()
+    local p = promise.new()
+    QBCore.Functions.TriggerCallback('krs-PizzaJob:CallBacks:getlevel', function(result)
+        p:resolve(result)
+    end, cb)
+    return Citizen.Await(p)
+end
