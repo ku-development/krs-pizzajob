@@ -1,7 +1,7 @@
 local QBCore = exports[Config.CoreResourceName]:GetCoreObject()
 local npcPed = 0
 local level = 0
-local nextLIn = 0
+local nextIn = 0
 local exp = 0
 
 -- NPC Initialization
@@ -40,12 +40,12 @@ RegisterNetEvent("krs-pizzajob:client:StartJobFirst")
 AddEventHandler("krs-pizzajob:client:StartJobFirst", function ()
     if Config.ShowJobUI then
         level = GetLevel()
-        nextLIn = GetNextLevelIn()
+        nextIn = GetNextLevelIn()
         exp = GetExp()
         SendNUIMessage({ 
             type = 'openNui',
             level = level,
-            nextIn = nextLIn,
+            nextIn = nextIn,
             exp = exp
          })
         SetNuiFocus(true, true)

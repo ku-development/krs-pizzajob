@@ -1,7 +1,7 @@
 
 let isMenuOpen = false;
 
-function OpenMenu() {
+function OpenMenu(level, next, exp) {
     $("#main-container, #main-page, #main-page-one, #main-page-two").fadeIn(400);
     $("#main-container").html('');
 
@@ -45,6 +45,7 @@ function OpenMenu() {
     $("#main-container").append(customButton);
     const startButton = document.querySelector('.start-button');
     const levelElement = document.getElementById('level');
+    const nextlElement = document.getElementById('nextl');
     const experienceElement = document.getElementById('experience');
     const deliveryGuy = document.querySelector('.delivery-guy');
     const customers = [
@@ -74,7 +75,12 @@ function OpenMenu() {
 
     document.getElementById('customerName').textContent = `Name: ${randomCustomer.name}`;
     document.getElementById('customerAddress').textContent = `Address: ${randomCustomer.address}`;
-
+    const newLevel = level;
+    const newExperience = exp;
+    const newEx = next;
+    levelElement.textContent = newLevel;
+    nextlElement.textContent = newEx;
+    experienceElement.textContent = newExperience;
     startButton.addEventListener('click', () => {
         // const newLevel = 5;
         // const newExperience = 150;
@@ -110,6 +116,9 @@ window.addEventListener('message', function (event) {
     if (item.type === 'openNui') {
         OpenMenu();
     } else if (item.type === 'closeNui') {
-        closeMenu();
+        var level = item.level
+        var nextIn = item.nextIn
+        var exp = item.exp
+        closeMenu(level, nextIn, exp);
     }
 });
