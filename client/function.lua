@@ -164,7 +164,7 @@ RegisterNetEvent('krs-pizzajob:client:deliverPizza', function()
             disableMouse = false,
             disableCombat = true,
         }, {}, {}, {}, function()
-            DeliveriesCount = DeliveriesCount + 1
+            DeliveriesCount += 1
             RemoveBlip(JobBlip)
             exports['qb-target']:RemoveZone("deliverZone")
             HasPizza = false
@@ -174,7 +174,7 @@ RegisterNetEvent('krs-pizzajob:client:deliverPizza', function()
             DeleteObject(prop)
             Notify("You received $"..payout, "success")
             time = Config.DeliveryTimer
-            Wait(1000)
+            Citizen.Wait(1000)
             ClearPedSecondaryTask(PlayerPedId())
             Notify("Pizza Delivered. Please wait for your next delivery!", "success") 
             SetTimeout(5000, function()    
@@ -215,7 +215,7 @@ function CompleteDelivery(t)
     end
     Notify('You Faild to deliver the pizza in time, giving you new delivery', "error")
     TriggerServerEvent('krs-pizzajobL:server:Fail')
-    Wait(1000)
+    Citizen.Wait(1000)
     NextDelivery()
 end
 
@@ -256,10 +256,9 @@ end)
 -- Thread: Timer
 Citizen.CreateThread(function()
     while true do
-        Wait(1000)
+        Citizen.Wait(1000)
         if Hired then
-            time = time - 1 -- Decrement the timer
+            time -= 1 -- Decrement the timer
         end
     end
 end)
-         
