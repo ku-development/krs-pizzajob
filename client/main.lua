@@ -7,7 +7,7 @@ CreateThread(function()
 
     RequestModel(npcModel)
     while not HasModelLoaded(npcModel) do
-        Wait(500)
+        Citizen.Wait(500)
     end
 
     local npcCoords = Config.JobStartLocation
