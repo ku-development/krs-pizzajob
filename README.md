@@ -6,7 +6,7 @@
 - Add OXLib menu that will show the xp / using command / using radial menu
 - Create Rating System 
 
-## Install: 
+## 📖 Install: 
 - make sure to add in your qbcore/server/player.lua
 - ``` PlayerData.metadata['pizzaexp'] = PlayerData.metadata['pizzaexp'] or 0 ```
 
@@ -14,7 +14,7 @@
 
 Enhance the immersive experience on your FiveM server by introducing a realistic and interactive pizza delivery job for players. This open-source script allows players to take on the role of a pizza delivery driver, delivering orders to various locations across the city.
 
-## 📖 ReadMe!
+## 🟢 Status!
 script is finished!
 
 ## 🎥 Preview
