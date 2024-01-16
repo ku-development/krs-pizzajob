@@ -164,7 +164,7 @@ RegisterNetEvent('krs-pizzajob:client:deliverPizza', function()
             disableMouse = false,
             disableCombat = true,
         }, {}, {}, {}, function()
-            DeliveriesCount += 1
+            DeliveriesCount = DeliveriesCount + 1
             RemoveBlip(JobBlip)
             exports['qb-target']:RemoveZone("deliverZone")
             HasPizza = false
@@ -258,7 +258,7 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(1000)
         if Hired then
-            time -= 1 -- Decrement the timer
+            time = time - 1 -- Decrement the timer
         end
     end
 end)

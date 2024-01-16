@@ -41,6 +41,9 @@ function getLevelIn(s)
     local Player = QBCore.Functions.GetPlayer(src)
     local pData = QBCore.Functions.GetPlayer(src)
     local PizzaExp = pData.PlayerData.metadata[MetaDataName]
+	if PizzaExp < 0 then
+		return 0
+	end
 	if PizzaExp < 1500 then 
 		return 1500 - PizzaExp -- 1
 	elseif PizzaExp <= 4000 and PizzaExp >= 1500 then

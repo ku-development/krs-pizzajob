@@ -15,8 +15,8 @@ script isnt ready yet
 
 ## 🎥 Preview
 - [youtube](Soon)
-- [UI](https://media.discordapp.net/attachments/1195317892103802930/1196379152702513182/image.png?ex=65b769e9&is=65a4f4e9&hm=4a19d75201abf506dc8572e4949ea4b27dd9bd1e3f06ec3ae6ff1772ca0d5077&=&format=webp&quality=lossless&width=814&height=484) 
-ofc not finished ui..
+- [UI](https://media.discordapp.net/attachments/1195317892103802930/1196854554738827274/image.png?ex=65b924aa&is=65a6afaa&hm=72cc53e9735169e169a74826b780b06f5dc2b52df284b22d81f82754061ddde8&=&format=webp&quality=lossless&width=484&height=484) 
+
 
 ## 🍕 Features
 

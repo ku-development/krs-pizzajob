@@ -27,7 +27,7 @@ function OpenMenu(level, next, exp) {
 
                 <div class="stats" id="main-page-two">
                     <p>Level: <span id="level">1</span></p>
-                    <p>Next Level in: <span id="level">1</span></p>
+                    <p>Next Level in: <span id="nextl">1</span></p>
                     <p>Experience: <span id="experience">0</span></p>
                 </div>
             </div>
@@ -79,7 +79,7 @@ function OpenMenu(level, next, exp) {
     const newExperience = exp;
     const newEx = next;
     levelElement.textContent = newLevel;
-    nextlElement.textContent = newEx;
+    nextlElement.textContent = next;
     experienceElement.textContent = newExperience;
     startButton.addEventListener('click', () => {
         // const newLevel = 5;

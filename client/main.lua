@@ -42,6 +42,7 @@ AddEventHandler("krs-pizzajob:client:StartJobFirst", function ()
         level = GetLevel()
         nextIn = GetNextLevelIn()
         exp = GetExp()
+        print(exp, level, nextIn)
         SendNUIMessage({ 
             type = 'openNui',
             level = level,
