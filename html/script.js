@@ -114,11 +114,11 @@ function closeMenu() {
 window.addEventListener('message', function (event) {
     var item = event.data;
     if (item.type === 'openNui') {
-        OpenMenu();
-    } else if (item.type === 'closeNui') {
         var level = item.level
         var nextIn = item.nextIn
         var exp = item.exp
-        closeMenu(level, nextIn, exp);
+        OpenMenu(level, nextIn, exp);
+    } else if (item.type === 'closeNui') {
+        closeMenu();
     }
 });
