@@ -18,7 +18,7 @@ function Notify(text, type)
         exports['okoknotify']:Alert('PizzaJob Information', text, 5000, type)
     elseif Config.Notify == 'ox' then
         lib.notify({
-            title = 'Information',
+            title = ' ',
             description = text,
             type = 'inform',
             position = 'top',
