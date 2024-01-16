@@ -84,7 +84,6 @@ body {
     z-index: 3;
     left: 50%;
     top: 50%;
-    -webkit-appearance: none;
     margin: 0;
     width: 510px;
     height: 20px;
