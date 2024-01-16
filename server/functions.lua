@@ -36,6 +36,24 @@ function getLevel(s)
 	end
 end
 
+function getLevelIn(s)
+	local src = s
+    local Player = QBCore.Functions.GetPlayer(src)
+    local pData = QBCore.Functions.GetPlayer(src)
+    local PizzaExp = pData.PlayerData.metadata[MetaDataName]
+	if PizzaExp < 1500 then 
+		return 1500 - PizzaExp -- 1
+	elseif PizzaExp <= 4000 and PizzaExp >= 1500 then
+		return 4000 - PizzaExp -- 2
+	elseif PizzaExp <= 7000 and PizzaExp >= 4000 then
+		return 7000 - PizzaExp -- 3
+	elseif PizzaExp <= 10000 and PizzaExp >= 7000 then
+		return 10000 - PizzaExp -- 4
+	elseif PizzaExp <= 15000  then
+		return 15000 - PizzaExp -- 5
+	end
+end
+
 function ServerNotify(text, type, source)
     if Config.Notify == 'qb' then
         TriggerClientEvent("QBCore:Notify", source, text)
@@ -68,3 +86,19 @@ function GetRandomItem()
     local itemName, amount = next(Config.RandomItems)
     return { item = itemName, amount = amount }
 end
+
+-- CallBacks
+QBCore.Functions.CreateCallback('krs-PizzaJob:CallBacks:getexp', function(source, cb, args)
+	local src = source
+    local pData = QBCore.Functions.GetPlayer(src)
+    local PizzaExp = pData.PlayerData.metadata[MetaDataName]
+	cb(PizzaExp)
+end)
+
+QBCore.Functions.CreateCallback('krs-PizzaJob:CallBacks:getnextlevelin', function(source, cb, args)
+	cb(getLevelIn(source))
+end)
+
+QBCore.Functions.CreateCallback('krs-PizzaJob:CallBacks:getlevel', function(source, cb, args)
+	cb(getLevel(source))
+end)
