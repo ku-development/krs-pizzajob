@@ -82,11 +82,6 @@ function OpenMenu(level, next, exp) {
     nextlElement.textContent = next;
     experienceElement.textContent = newExperience;
     startButton.addEventListener('click', () => {
-        // const newLevel = 5;
-        // const newExperience = 150;
-
-        // levelElement.textContent = newLevel;
-        // experienceElement.textContent = newExperience;
         StartDelivery()
     });
 }
@@ -113,12 +108,12 @@ function closeMenu() {
 
 window.addEventListener('message', function (event) {
     var item = event.data;
-    if (item.type === 'openNui') {
+    if (item.type === 'openPizza') {
         var level = item.level
         var nextIn = item.nextIn
         var exp = item.exp
         OpenMenu(level, nextIn, exp);
-    } else if (item.type === 'closeNui') {
+    } else if (item.type === 'closePizza') {
         closeMenu();
     }
 });

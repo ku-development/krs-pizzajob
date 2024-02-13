@@ -19,8 +19,8 @@ CreateThread(function()
     SetEntityAsMissionEntity(npcPed, true, true)
     SetBlockingOfNonTemporaryEvents(npcPed, true)
     SetEntityInvincible(npcPed, true)
+    FreezeEntityPosition(npcPed, true)
 
-    -- Add target entity for NPC
     exports[Config.Target]:AddTargetEntity(npcPed, {
         options = {
             {
@@ -44,7 +44,7 @@ AddEventHandler("krs-pizzajob:client:StartJobFirst", function ()
         exp = GetExp()
         print(exp, level, nextIn)
         SendNUIMessage({ 
-            type = 'openNui',
+            type = 'openPizza',
             level = level,
             nextIn = nextIn,
             exp = exp
@@ -84,18 +84,9 @@ RegisterNetEvent('krs-pizzajob:client:notify', function (text, type)
 end)
 
 Citizen.CreateThread(function ()
-    SendNUIMessage({ type = 'closeNui' })
+    Citizen.wait(2500) -- adjust according to server ping
+    SendNUIMessage({ type = 'closePizza' })
 end)
-
-
-RegisterCommand('openui', function()
-    SendNUIMessage({ type = 'openNui' })
-end, false)
-
-RegisterCommand('closeui', function()
-    SendNUIMessage({ type = 'closeNui' })
-end, false)
-
 
 -- Ui Functions:
 
